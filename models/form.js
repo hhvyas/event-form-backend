@@ -64,11 +64,11 @@ const AwardFormSchema = new Schema({
         default: "",
     },
 
-    Document: {
-        type: String,
-        data: Buffer,
-        default: "",
-    }
+    datetime: {
+        type: Date,
+        required: true,
+        default: Date.now()
+    },
 }, {timestamps: true});
 
 const Event_Form = mongoose.model("Detail", AwardFormSchema);

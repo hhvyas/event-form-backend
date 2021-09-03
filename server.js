@@ -21,9 +21,6 @@ app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());
 
 //Routes
-app.post('/eventform', async(req, res) => {
-    let received_data = JSON.parse(JSON.stringify(req.body));
-    console.log(received_data);
-    res.send('Response');
-});
+app.use("/", require("./routes/index"))
+
 app.listen(5001, '0.0.0.0');
