@@ -15,7 +15,10 @@ const AwardFormSchema = new Schema({
         type: String,
         default: "",
     },
-    
+    Contact: {
+        type: String,
+        default: ""
+    },
     Email_id: {
         type: String,
         default: ""
@@ -24,12 +27,12 @@ const AwardFormSchema = new Schema({
         type: String,
         default: "",
     },
-    
+
     School_Name: {
         type: String,
         default: "",
     },
-    
+
     Course_Name: {
         type: String,
         default: "",
@@ -58,18 +61,34 @@ const AwardFormSchema = new Schema({
         type: String,
         default: "",
     },
-    
-    Event_Date: {
-        type: Date,
-        default: "",
-    },
-
-    datetime: {
-        type: Date,
+    Start_Date: {
+        type: String,
         required: true,
         default: Date.now()
     },
-}, {timestamps: true});
+    End_Date: {
+        type: String,
+        required: true,
+        default: Date.now()
+    },
+    Document: {
+        type: String,
+        required: true,
+        default: "",
+    },
+    Team_Size: {
+        type: Number,
+        required: true,
+        default: 1
+    },
+    isVerified: {
+        type: Boolean,
+        required: true,
+        default: false
+    }
+}, {
+    timestamps: true
+});
 
 const Event_Form = mongoose.model("Detail", AwardFormSchema);
 module.exports = Event_Form;

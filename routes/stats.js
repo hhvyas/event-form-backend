@@ -1,13 +1,11 @@
 const express = require('express');
 const fetch = require('node-fetch');
 
-const Award_Form = require('../models/form');
 const router = express.Router();
-var ObjectID = require('mongodb').ObjectID;
+const controller = require("../controllers/stats.contoller");
 
-router.get("/stats", async (req, res) => {
-    console.log(req)
-});
+
+router.get("/", controller.stats);
 
 
 

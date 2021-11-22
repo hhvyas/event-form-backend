@@ -2,11 +2,12 @@ const cors = require('cors');
 const express = require('express');
 const mongoose = require('mongoose');
 const bodyParser = require("body-parser");
-const Award_Form = require('../event-form-backend/models/form');
+const Award_Form = require('./models/form');
+
 
 
 //DB config
-const db = "mongodb+srv://admin:admin@cluster0.qm6i0.mongodb.net/Award-Form?authSource=admin&replicaSet=atlas-j8osla-shard-0&readPreference=primary&appname=MongoDB%20Compass&ssl=true";
+const db = "mongodb://127.0.0.1:27017/event_RRU";
 
 //Connect to mongodb
 mongoose.connect(db, { useNewUrlParser: true, useUnifiedTopology: true })
@@ -20,7 +21,18 @@ app.use(cors());
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());
 
-//Routes
-app.use("/", require("./routes/index"))
+const routeForm = require("./routes/form");
+const routeStats = require("./routes/stats")
+const routeEventList = require("./routes/event_list")
+const routeAuth = require("./routes/auth")
+
+
+app.use("/form", routeForm)
+app.use("/event_list", routeEventList)
+app.use("/stats", routeStats)
+app.use("/auth", routeAuth)
+// app.use("/stats", require("./routes/stats"))
+// app.use("/", require("./routes/index"))
+
 
 app.listen(5001, '0.0.0.0');
